@@ -133,8 +133,7 @@ Wind.prototype.matrix = function(x, y) {
 // Returns a styling for 3d transforms
 Wind.prototype.pos3d = function(x, y) {
 	if(this.invert) {
-		var y = -y;
-		var x = -x;
+		var y = - y;
 	}
 	return 'rotate3d(1, 0, 0,' + x + 'deg) rotate3d(0, 1, 0,' + y + 'deg)';
 	
