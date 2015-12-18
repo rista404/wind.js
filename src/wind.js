@@ -1,3 +1,10 @@
+/**
+ * Wind.js 0.4.0
+ * @author Nikola Ristic - @rista404
+ * @copyright (C) 2015 Nikola Ristic
+ * @license MIT
+ */
+
 (function( window, document, undefined ) {
 
 'use strict';
