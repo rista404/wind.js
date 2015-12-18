@@ -67,7 +67,7 @@ Wind.prototype.setup = function(){
 	}
 
 	// Checks if a transition value is passed
-	if(this.transition !== 0 && this.enabled) {
+	if(this.transition !== 0) {
 		var self = this;
 
 		this.target.forEach(function(element, index) {
