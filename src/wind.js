@@ -57,12 +57,11 @@ Wind.prototype.start = function() {
 	// Checks if a transition value is passed
 	if(this.transition !== 0 ) {
 		var self = this;
-		console.log(this.transition);
 
 		this.target.forEach(function(element, index) {
-			element.style.transition += 'transform ' + self.transition + 'ms';
-			element.style.WebkitTransition += 'transform ' + self.transition + 'ms';
-			element.style.MozTransition += 'transform ' + self.transition + 'ms';
+			element.style.transition = 'transform ' + self.transition + 'ms';
+			element.style.WebkitTransition = 'transform ' + self.transition + 'ms';
+			element.style.MozTransition = 'transform ' + self.transition + 'ms';
 		});
 	}
 
