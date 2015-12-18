@@ -23,19 +23,24 @@ function Wind(element, options) {
 	this.rot3d = options.rot3d || DEFAULTS.rot3d;
 	this.transition = options.transition || DEFAULTS.transition;
 
+	this.enabled = false;
+
 	this.onMouseMove = this.onMouseMove.bind(this);
 	this.moveTarget = this.moveTarget.bind(this);
 	this.calculateMovement = this.calculateMovement.bind(this);
 	this.matrix = this.matrix.bind(this);
 	this.pos3d = this.pos3d.bind(this);
+
+	this.setup = this.setup.bind(this);
 	this.start = this.start.bind(this);
+	this.stop = this.stop.bind(this);
 
-
+	this.setup();
 	this.start();
 
 }
 
-Wind.prototype.start = function() {
+Wind.prototype.setup = function(){
 
 	// Checks if NodeList is passed
 	if( this.isNodeList(this.target) ) {
@@ -55,22 +60,37 @@ Wind.prototype.start = function() {
 	}
 
 	// Checks if a transition value is passed
-	if(this.transition !== 0 ) {
+	if(this.transition !== 0 && this.enabled) {
 		var self = this;
 
 		this.target.forEach(function(element, index) {
-			element.style.transition = 'transform ' + self.transition + 'ms';
-			element.style.WebkitTransition = 'transform ' + self.transition + 'ms';
-			element.style.MozTransition = 'transform ' + self.transition + 'ms';
+			element.style.transition = element.style.WebkitTransition = element.style.MozTransition = 'transform ' + self.transition + 'ms';
+		});
+	}
+};
+
+Wind.prototype.start = function() {
+
+	if ( !this.enabled ) {
+      	this.enabled = true;
+
+		window.addEventListener('mousemove', this.onMouseMove);
+	}
+
+};
+
+Wind.prototype.stop = function() {
+
+	if( this.enabled ) {
+		this.enabled = false;
+
+		window.removeEventListener('mousemove', this.onMouseMove);
+
+		this.target.forEach(function(element, index){
+			element.style.transform = element.style.WebkitTransform = "";
 		});
 	}
 
-
-	this.listen();
-};
-
-Wind.prototype.listen = function(argument){
-	window.addEventListener('mousemove', this.onMouseMove);
 };
 
 // Determines if passed object is a Node List
