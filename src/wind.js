@@ -28,14 +28,14 @@ function Wind(element, options) {
 	this.calculateMovement = this.calculateMovement.bind(this);
 	this.matrix = this.matrix.bind(this);
 	this.pos3d = this.pos3d.bind(this);
-	this.init = this.init.bind(this);
+	this.start = this.start.bind(this);
 
 
-	this.init();
+	this.start();
 
 }
 
-Wind.prototype.init = function(){
+Wind.prototype.start = function() {
 
 	// Checks if NodeList is passed
 	if( this.isNodeList(this.target) ) {
@@ -52,6 +52,18 @@ Wind.prototype.init = function(){
 	}
 	else {
 		this.styling = this.matrix;
+	}
+
+	// Checks if a transition value is passed
+	if(this.transition !== 0 ) {
+		var self = this;
+		console.log(this.transition);
+
+		this.target.forEach(function(element, index) {
+			element.style.transition += 'transform ' + self.transition + 'ms';
+			element.style.WebkitTransition += 'transform ' + self.transition + 'ms';
+			element.style.MozTransition += 'transform ' + self.transition + 'ms';
+		});
 	}
 
 

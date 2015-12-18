@@ -4,7 +4,7 @@
   "description": "Easy mouse-controlled move effect. Currently in development.",
   "main": "src/wind.js",
   "scripts": {
-    "build": "./node_modules/.bin/uglifyjs src/wind.js -o ./dist/wind.min.js -c "
+    "build": "./node_modules/.bin/uglifyjs src/wind.js -o ./dist/wind.min.js -c"
   },
   "repository": {
     "type": "git",
