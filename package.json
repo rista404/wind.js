@@ -4,7 +4,8 @@
   "description": "Easy mouse-controlled move effect. Currently in development.",
   "main": "src/wind.js",
   "scripts": {
-    "build": "./node_modules/.bin/uglifyjs src/wind.js -o ./dist/wind.min.js -c --comments"
+    "watch": "watch \"npm run build\" src/",
+    "build": "uglifyjs src/wind.js -o ./dist/wind.min.js -c --comments"
   },
   "repository": {
     "type": "git",
@@ -12,11 +13,16 @@
   },
   "author": "Nikola Ristic",
   "license": "MIT",
+  "bin": {
+    "uglifyjs": "./node_modules/.bin/uglifyjs",
+    "watch": "./node_modules/.bin/watch"
+  },
   "bugs": {
     "url": "https://github.com/rista404/wind.js/issues"
   },
   "homepage": "https://github.com/rista404/wind.js#readme",
   "devDependencies": {
-    "uglify-js": "^2.6.1"
+    "uglify-js": "^2.6.1",
+    "watch": "^0.17.1"
   }
 }
