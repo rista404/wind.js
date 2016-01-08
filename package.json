@@ -4,8 +4,10 @@
   "description": "Easy mouse-controlled move effect. Currently in development.",
   "main": "src/wind.js",
   "scripts": {
-    "watch": "watch \"npm run build\" src/",
-    "build": "uglifyjs src/wind.js -o ./dist/wind.min.js -c --comments"
+    "start": "watch \"npm run build\" src/",
+    "build": "npm run concat; npm run minify;",
+    "concat": "concat-cli -f src/*.js -o ./dist/wind.js",
+    "minify": "uglifyjs ./dist/wind.js -o ./dist/wind.min.js -c --comments"
   },
   "repository": {
     "type": "git",
@@ -15,13 +17,15 @@
   "license": "MIT",
   "bin": {
     "uglifyjs": "./node_modules/.bin/uglifyjs",
-    "watch": "./node_modules/.bin/watch"
+    "watch": "./node_modules/.bin/watch",
+    "concat-cli": "./node_modules/.bin/concat-cli"
   },
   "bugs": {
     "url": "https://github.com/rista404/wind.js/issues"
   },
   "homepage": "https://github.com/rista404/wind.js#readme",
   "devDependencies": {
+    "concat-cli": "^4.0.0",
     "uglify-js": "^2.6.1",
     "watch": "^0.17.1"
   }
