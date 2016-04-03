@@ -125,14 +125,10 @@ Wind.prototype.getMousePos = function(event) {
 
 	if (!event) var event = window.event;
 
-	if (event.pageX || event.pageY) {
-		posX = event.pageX;
-		posY = event.pageY;
-	}
-	else if (event.clientX || event.clientY) {
-		posX = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-		posY = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-	}
+	console.log(event);
+
+	posX = event.clientX;
+	posY = event.clientY;
 
 	return {
 		x : posX,
